@@ -1,0 +1,26 @@
+//if your data is a String array and not ArrayList
+public String toJSON(String[] urlArray){
+  JSONArray json = new JSONArray();
+  for (String str : urlArray) {
+			json.put(str);
+		}
+	return json.toString();
+}
+
+public String[] fromJSON(String jsonData){
+    if(jsonData==null){
+      return null;
+    }
+    try {
+			JSONArray json = new JSONArray(jsonData);
+			String[] data = new String[json.length()];
+			for (int i = 0; i < json.length(); i++) {
+				data[i] = json.getString(i);
+			}
+			return data;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	return null;
+}
